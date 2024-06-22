@@ -1,10 +1,5 @@
-from colorama import Style, Fore, Back
-_ALL_COLORS_ = [Fore.RED,Fore.BLUE,Fore.GREEN,Fore.YELLOW,
-    Fore.CYAN,Fore.MAGENTA,Fore.WHITE,Fore.BLACK
-]
-
 try:
-    number = int(input("===>"))
+    number = int(input("enter a number:"))
 except ValueError:
     print('Enter a integer not a string.')    
     number = int(input("===>"))
@@ -15,23 +10,15 @@ def binary(num):
     while num>0:
         remainder = num%2
         code += str(remainder)
-        print(f"{_ALL_COLORS_[0]}2 {_ALL_COLORS_[6]}|{_ALL_COLORS_[1]} {num} {_ALL_COLORS_[6]}|{_ALL_COLORS_[3]} {remainder}")
         num = num//2
-    binarycode = list(code)
-    binarycode.reverse()
-    binarycode = str(binarycode)
-    binarycode = binarycode.strip("[")
-    binarycode = binarycode.strip("]")
-    binarycode = binarycode.replace(" ","")
-    binarycode = binarycode.replace("'","")
-    binarycode = binarycode.replace(",","")
-    print("Binary number is ",binarycode)           
+    print("Binary number is :",code[-1::-1])           
 binary(number)
-again = input('Wanna Run Again Y/N')    
+again = input('Wanna Run Again y/n:')    
 while again != 'N' or 'n':
-    number = int(input("===>"))
+    if(again!='y' or 'Y'):
+        again = input('Wrong input enter only y/n: ')     
+    number = int(input("enter number:"))
     binary(number)
-    again = input('Wanna Run Again Y/N: ') 
-    if again == 'N' or 'n':
-        print('Thanku For using')
-        break
+    again = input('Wanna Run Again y/n: ') 
+else:
+    print('Thankyou for using')
